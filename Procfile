@@ -1,1 +1,1 @@
-web: gunicorn login_session-master.wsgi --log-file -
+web: gunicorn secondproject.wsgi --log-file -
