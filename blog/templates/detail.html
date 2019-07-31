@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<h1 style="font-family: 'Jua', sans-serif; color:palevioletred;">DETAIL PAGE - {{blog.id}}번째 글</h1>
+
+<div class="container">
+    <h1 style="font-family: 'Jua', sans-serif; font-size:30px;">{{ blog.title }}</h1>
+    <p style="font-family: 'Jua', sans-serif; font-size:20px;">{{ blog.body }}</p>
+    <p style="font-family: 'Jua', sans-serif;">{{ blog.pub_date }}</p>
+  
+
+    <hr>
+    <a href="{% url 'comment_new' blog.pk %}" style="font-family: 'Jua', sans-serif;">댓글 추가하기</a>
+
+    {% for comment in blog.comments.all %}
+      <div class="comment">
+        <li style="font-family: 'Jua', sans-serif;">
+          {{ comment.text }}<small> by <strong>{{ comment.author }}</strong>, {{ comment.created_at }}</small>
+        </li>
+      </div>
+
+      {% empty %}
+        <p style="font-family: 'Jua', sans-serif;">아직 댓글이 없습니다! :(</p>
+    {% endfor %}
+
+    <hr>
+    <a href="{% url 'home' %}" style="font-family: 'Jua', sans-serif;">돌아가기</a>
+</div>

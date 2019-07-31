@@ -1,0 +1,10 @@
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+{% block content %}
+  <h1 style="font-family: 'Jua', sans-serif;">New comment</h1>
+  <form method="POST" class="post-form">{% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" class="save btn btn-default">
+  </form>
+{% endblock %}

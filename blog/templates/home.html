@@ -1,0 +1,17 @@
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+{%extends 'base.html'%}
+<!--base.html을 쓸거에요!라고 선언해주기 navbar 불러옴.-->
+
+{%block contents%}
+<!--이 부분이 content에요! 라고 알리기-->
+<h1 style="font-family: 'Jua', sans-serif; font-size: 50px; text-align:center; color:palevioletred;">--------------<br>MY HOME PAGE<br>--------------</h1>
+
+{% for blog in blogs.all %}
+    <div class="container">
+        <h2 style="font-family: 'Jua', sans-serif; text-align:center;">{{blog.id}}번째 글 - {{ blog.title }}({{ blog.comments.count }})</h2>
+        <p style="font-family: 'Jua', sans-serif; text-align:center;">{{ blog.pub_date }}</p>
+        <p style="font-family: 'Jua', sans-serif; text-align:center;">{{ blog.summary }}<br><br><a href="{% url 'detail' blog.id %}">...more</a></p>
+        <p style="font-family: 'Jua', sans-serif; text-align: center; font-size:15px;"><a href="{% url 'delete' blog.id %}">삭제</a></p>
+    </div>
+{% endfor %}
+{%endblock%}
